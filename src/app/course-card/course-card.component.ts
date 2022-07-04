@@ -12,6 +12,10 @@ export class CourseCardComponent implements OnInit {
 
 @Input()
 course: Course;
+
+@Input()
+cardIndex: number;
+
 @Output()
 courseSelected = new EventEmitter<Course>();
   
@@ -19,10 +23,29 @@ courseSelected = new EventEmitter<Course>();
   }
   ngOnInit() {
   }  
+
+  isImageVisible(){
+    return this.course && this.course.iconUrl;
+  }
+
+  hasTitle(){
+    return this.course && this.course.description
+  }
   onCourseViewed(){
     console.log("clicked...")
     this.courseSelected.emit(this.course);
   }
   
+  cardClasses() {
+
+    if(this.course.category == 'BEGINNER'){
+      return 'beginner'
+    }else if (this.course.category == 'ADVANCED'){
+      return 'advanced'
+    }else {
+      return 'intermediate'
+    }
+  }
+
 }
 
