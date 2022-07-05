@@ -16,6 +16,8 @@ course: Course;
 @Input()
 cardIndex: number;
 
+
+
 @Output()
 courseSelected = new EventEmitter<Course>();
   
@@ -45,6 +47,12 @@ courseSelected = new EventEmitter<Course>();
     }else {
       return 'intermediate'
     }
+  }
+
+  cardStyles(){
+    return {
+      'background-image': 'url(' + this.course.iconUrl + ')'
+    };
   }
 
 }
